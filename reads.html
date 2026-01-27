@@ -69,10 +69,10 @@
                 height: auto;
                 float: left;
                 margin-right: 2rem;
-                width: 120px;
+                width: 100px;
             }
             .gr_custom_book_container_ img {
-                width: 120px;
+                width: 100px;
                 height: auto;
                 border: 1px solid var(--border);
             }
@@ -201,5 +201,19 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+// Replace small book cover images with larger versions
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const bookImages = document.querySelectorAll('.gr_custom_book_container_ img');
+        bookImages.forEach(img => {
+            // Replace _SY75_ or _SX75_ with _SY300_ for much larger, sharper images
+            if (img.src) {
+                img.src = img.src.replace(/_S[XY]\d+_/, '_SY300_');
+            }
+        });
+    }, 500);
+});
+</script>
 </body>
 </html>
