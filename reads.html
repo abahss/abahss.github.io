@@ -24,46 +24,180 @@
             <p class="page-description">Books I'm currently exploring and enjoying</p>
         </div>
 
-        <div class="content-grid">
-            <article class="book-item">
-                <div class="book-cover"></div>
-                <div class="book-info">
-                    <h3>Add Your Book Title</h3>
-                    <p class="author">Author Name</p>
-                    <p class="book-description">A brief description of what you're enjoying about this book and why you're reading it.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%"></div>
-                    </div>
-                    <span class="progress-text">65% complete</span>
-                </div>
-            </article>
+        <!-- Goodreads Widget Styling -->
+        <style type="text/css" media="screen">
+            .gr_custom_container_ {
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background-color: transparent;
+                color: var(--text-primary);
+                width: 100%;
+                max-width: 1200px;
+            }
+            .gr_custom_header_ {
+                border-bottom: 2px solid var(--accent);
+                width: 100%;
+                margin-bottom: 2rem;
+                text-align: left;
+                font-size: 1.5rem;
+                padding-bottom: 1rem;
+            }
+            .gr_custom_header_ a {
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                color: var(--text-primary);
+                text-decoration: none;
+            }
+            .gr_custom_each_container_ {
+                width: 100%;
+                clear: both;
+                margin-bottom: 2rem;
+                overflow: auto;
+                padding: 2rem;
+                border: 1px solid var(--border);
+                background: var(--bg-secondary);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+            }
+            .gr_custom_each_container_:hover {
+                border-color: var(--accent);
+                transform: translateX(10px);
+            }
+            .gr_custom_book_container_ {
+                overflow: hidden;
+                height: auto;
+                float: left;
+                margin-right: 2rem;
+                width: 120px;
+            }
+            .gr_custom_book_container_ img {
+                width: 120px;
+                height: auto;
+                border: 1px solid var(--border);
+            }
+            .gr_custom_author_ {
+                font-size: 0.95rem;
+                color: var(--accent);
+                margin-top: 0.5rem;
+                font-weight: 500;
+            }
+            .gr_custom_title_ {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+            .gr_custom_title_ a {
+                color: var(--text-primary);
+                text-decoration: none;
+            }
+            .gr_custom_title_ a:hover {
+                color: var(--accent);
+            }
+            .gr_custom_tags_ {
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                margin-top: 0.5rem;
+            }
+            .gr_custom_rating_ {
+                float: right;
+                margin-top: 0.5rem;
+            }
+            #gr_custom_widget_ center {
+                margin-top: 2rem;
+                opacity: 0.5;
+            }
+            #gr_custom_widget_ center:hover {
+                opacity: 1;
+            }
+        </style>
 
-            <article class="book-item">
-                <div class="book-cover"></div>
-                <div class="book-info">
-                    <h3>Another Book Title</h3>
-                    <p class="author">Author Name</p>
-                    <p class="book-description">What drew you to this book and what insights you're gaining from it.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 30%"></div>
+        <div id="gr_custom_widget_">
+            <div class="gr_custom_container_">
+                <h2 class="gr_custom_header_">
+                    <a style="text-decoration: none;" rel="nofollow" href="https://www.goodreads.com/review/list/194522871-anchelb?shelf=read&utm_medium=api&utm_source=custom_widget">AnChelB's books</a>
+                </h2>
+                <div class="gr_custom_each_container_">
+                    <div class="gr_custom_book_container_">
+                        <a title="Das Café ohne Namen" rel="nofollow" href="https://www.goodreads.com/review/show/8163547397?utm_medium=api&utm_source=custom_widget"><img alt="Das Café ohne Namen" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1675731047l/104216331._SY75_.jpg" /></a>
                     </div>
-                    <span class="progress-text">30% complete</span>
-                </div>
-            </article>
-
-            <article class="book-item">
-                <div class="book-cover"></div>
-                <div class="book-info">
-                    <h3>Third Book Title</h3>
-                    <p class="author">Author Name</p>
-                    <p class="book-description">Your thoughts on this book and what makes it worth your time.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%"></div>
+                    <div class="gr_custom_rating_">
+                        <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
                     </div>
-                    <span class="progress-text">85% complete</span>
+                    <div class="gr_custom_title_">
+                        <a rel="nofollow" href="https://www.goodreads.com/review/show/8163547397?utm_medium=api&utm_source=custom_widget">Das Café ohne Namen</a>
+                    </div>
+                    <div class="gr_custom_author_">
+                        by <a rel="nofollow" href="https://www.goodreads.com/author/show/3472588.Robert_Seethaler">Robert Seethaler</a>
+                    </div>
                 </div>
-            </article>
+                <div class="gr_custom_each_container_">
+                    <div class="gr_custom_book_container_">
+                        <a title="Und Nietzsche weinte" rel="nofollow" href="https://www.goodreads.com/review/show/8158971349?utm_medium=api&utm_source=custom_widget"><img alt="Und Nietzsche weinte" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1363113096l/2015310._SY75_.jpg" /></a>
+                    </div>
+                    <div class="gr_custom_rating_">
+                        <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+                    </div>
+                    <div class="gr_custom_title_">
+                        <a rel="nofollow" href="https://www.goodreads.com/review/show/8158971349?utm_medium=api&utm_source=custom_widget">Und Nietzsche weinte</a>
+                    </div>
+                    <div class="gr_custom_author_">
+                        by <a rel="nofollow" href="https://www.goodreads.com/author/show/909675.Irvin_D_Yalom">Irvin D. Yalom</a>
+                    </div>
+                </div>
+                <div class="gr_custom_each_container_">
+                    <div class="gr_custom_book_container_">
+                        <a title="The Man in the High Castle" rel="nofollow" href="https://www.goodreads.com/review/show/8039954243?utm_medium=api&utm_source=custom_widget"><img alt="The Man in the High Castle" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1448756803l/216363._SY75_.jpg" /></a>
+                    </div>
+                    <div class="gr_custom_rating_">
+                        <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+                    </div>
+                    <div class="gr_custom_title_">
+                        <a rel="nofollow" href="https://www.goodreads.com/review/show/8039954243?utm_medium=api&utm_source=custom_widget">The Man in the High Castle</a>
+                    </div>
+                    <div class="gr_custom_author_">
+                        by <a rel="nofollow" href="https://www.goodreads.com/author/show/4764.Philip_K_Dick">Philip K. Dick</a>
+                    </div>
+                </div>
+                <div class="gr_custom_each_container_">
+                    <div class="gr_custom_book_container_">
+                        <a title="The God of Small Things" rel="nofollow" href="https://www.goodreads.com/review/show/8036155601?utm_medium=api&utm_source=custom_widget"><img alt="The God of Small Things" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1767305433l/9777._SY75_.jpg" /></a>
+                    </div>
+                    <div class="gr_custom_rating_">
+                        <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+                    </div>
+                    <div class="gr_custom_title_">
+                        <a rel="nofollow" href="https://www.goodreads.com/review/show/8036155601?utm_medium=api&utm_source=custom_widget">The God of Small Things</a>
+                    </div>
+                    <div class="gr_custom_author_">
+                        by <a rel="nofollow" href="https://www.goodreads.com/author/show/6134.Arundhati_Roy">Arundhati Roy</a>
+                    </div>
+                </div>
+                <div class="gr_custom_each_container_">
+                    <div class="gr_custom_book_container_">
+                        <a title="Du musst nicht von allen gemocht werden. Vom Mut, sich nicht zu verbiegen" rel="nofollow" href="https://www.goodreads.com/review/show/8016770062?utm_medium=api&utm_source=custom_widget"><img alt="Du musst nicht von allen gemocht werden. Vom Mut, sich nicht zu verbiegen" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1545689917l/43342878._SY75_.jpg" /></a>
+                    </div>
+                    <div class="gr_custom_rating_">
+                        <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+                    </div>
+                    <div class="gr_custom_title_">
+                        <a rel="nofollow" href="https://www.goodreads.com/review/show/8016770062?utm_medium=api&utm_source=custom_widget">Du musst nicht von allen gemocht werden. Vom Mut, sich nicht zu verbiegen</a>
+                    </div>
+                    <div class="gr_custom_author_">
+                        by <a rel="nofollow" href="https://www.goodreads.com/author/show/14541046.Ichiro_Kishimi">Ichiro Kishimi</a>
+                    </div>
+                </div>
+                <br style="clear: both"/>
+                <center>
+                    <a rel="nofollow" href="https://www.goodreads.com/"><img alt="goodreads.com" style="border:0" src="https://s.gr-assets.com/images/widget/widget_logo.gif" /></a>
+                </center>
+                <noscript>
+                    Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and ratings with AnChelB, and even join a <a rel="nofollow" href="https://www.goodreads.com/group">book club</a> on Goodreads.
+                </noscript>
+            </div>
         </div>
+        <script src="https://www.goodreads.com/review/custom_widget/194522871.AnChelB's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=&shelf=&sort=&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
     </main>
 
     <script src="script.js"></script>
