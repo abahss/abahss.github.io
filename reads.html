@@ -234,23 +234,49 @@
                 </noscript>
             </div>
         </div>
-        <script src="https://www.goodreads.com/review/custom_widget/194522871.AnChelB's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=&shelf=&sort=&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
+        src="https://www.goodreads.com/review/custom_widget/194522871.AnChelB's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=20&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=0&show_title=1&sort=rating&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1769548248&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script>
     </main>
 
     <script src="script.js"></script>
     <script>
-// Replace small book cover images with larger versions
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        const bookImages = document.querySelectorAll('.gr_custom_book_container_ img');
-        bookImages.forEach(img => {
-            // Replace _SY75_ or _SX75_ with _SY300_ for much larger, sharper images
-            if (img.src) {
-                img.src = img.src.replace(/_S[XY]\d+_/, '_SY300_');
+    // Replace small book cover images with larger versions
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const bookImages = document.querySelectorAll('.gr_custom_book_container_ img');
+            bookImages.forEach(img => {
+                // Replace _SY75_ or _SX75_ with _SY300_ for much larger, sharper images
+                if (img.src) {
+                    img.src = img.src.replace(/_S[XY]\d+_/, '_SY300_');
+                }
+            });
+        }, 500);
+    });
+    </script>
+    <script>
+    // Remove random numbers from Goodreads class names to work with our custom CSS
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // Find all elements with numbered Goodreads classes
+            const elements = document.querySelectorAll('[class*="gr_custom_"]');
+            elements.forEach(el => {
+                // Get all classes
+                const classes = Array.from(el.classList);
+                classes.forEach(className => {
+                    if (className.startsWith('gr_custom_')) {
+                        // Remove the number suffix and add the clean class name
+                        const cleanClass = className.replace(/_\d+$/, '_');
+                        el.classList.add(cleanClass);
+                    }
+                });
+            });
+            
+            // Also handle IDs
+            const widget = document.querySelector('[id*="gr_custom_widget_"]');
+            if (widget) {
+                widget.id = 'gr_custom_widget_';
             }
-        });
-    }, 500);
-});
-</script>
+        }, 100);
+    });
+    </script>
 </body>
 </html>
