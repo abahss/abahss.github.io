@@ -126,6 +126,17 @@
             #gr_custom_widget_ center:hover {
                 opacity: 1;
             }
+            @media (max-width: 768px) {
+            #gr_custom_widget_ {
+                grid-template-columns: 1fr;
+                }
+            }
+
+            @media (min-width: 769px) and (max-width: 1024px) {
+            #gr_custom_widget_ {
+                grid-template-columns: repeat(2, 1fr);
+                }
+            }
         </style>
 
         <div id="gr_custom_widget_">
