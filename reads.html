@@ -26,6 +26,16 @@
 
         <!-- Goodreads Widget Styling -->
         <style type="text/css" media="screen">
+            #gr_custom_widget_ {
+                display: block !important;
+            }
+
+            #gr_custom_widget_ > div {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 2rem !important;
+            }
+            
             .gr_custom_container_ {
                 border: none;
                 border-radius: 0;
