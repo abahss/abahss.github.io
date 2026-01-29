@@ -18,143 +18,344 @@
     </nav>
 
     <main class="page-content">
-        <div class="page-header">
-            <span class="page-number">01</span>
-            <h1 class="page-title">Reading</h1>
-            <p class="page-description">Books I'm currently exploring and enjoying</p>
+        <!-- Top Section: Current Reading Only -->
+        <div class="current-reading-card">
+            <h2 class="current-reading-title">
+                <span class="section-icon">🕯️</span>
+                Currently Reading
+            </h2>
+            <div id="gr_custom_widget_current"></div>
+        </div>
+
+        <!-- Bottom Section: Read Books Grid -->
+        <div class="library-section">
+            <h2 class="section-title">
+                <span class="section-icon">📚</span>
+                My Library
+            </h2>
+            <p class="section-description">Books I've finished and loved</p>
+
+            <div id="gr_custom_widget_read"></div>
         </div>
 
         <!-- Goodreads Widget Styling -->
-        <style type="text/css" media="screen">
-            #gr_custom_widget_ {
+         <style type="text/css" media="screen">
+            /* Hero Section Layout */
+            .reads-hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                margin-bottom: 6rem;
+                align-items: start;
+            }
+
+            .reads-header {
+                padding-right: 2rem;
+            }
+
+            .reads-header .page-number {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                color: var(--accent);
+                display: block;
+                margin-bottom: 1rem;
+                font-weight: 700;
+            }
+
+            .reads-header .page-title {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2.5rem, 6vw, 4rem);
+                font-weight: 900;
+                margin-bottom: 1rem;
+            }
+
+            .reads-header .page-description {
+                font-size: 1.2rem;
+                color: var(--text-secondary);
+                font-weight: 300;
+                line-height: 1.6;
+            }
+
+            .current-reading-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            /* Current Reading Card - Floating on Right */
+            .current-reading-card {
+                background: linear-gradient(135deg, #e8dff5 0%, #f0e9f7 100%);
+                border: 1px solid rgba(177, 156, 217, 0.3);
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(177, 156, 217, 0.15);
+                position: fixed;
+                top: 120px;
+                right: 40px;
+                width: 280px;
+                z-index: 100;
+            }
+            .section-icon {
+                font-size: 1.5rem;
+            }
+
+            /* Current Reading Widget - Single Book Display */
+            #gr_custom_widget_current {
                 display: block !important;
             }
 
-            #gr_custom_widget_ > div {
-                display: grid !important;
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 2rem !important;
+            #gr_custom_widget_current .gr_custom_container_ {
+                display: block !important;
             }
 
-            .gr_custom_container_ {
-                border: none;
-                border-radius: 0;
-                padding: 0;
-                background-color: transparent;
-                color: var(--text-primary);
-                width: 100%;
-                max-width: 1200px;
+            #gr_custom_widget_current .gr_custom_each_container_ {
+                background: rgba(255, 255, 255, 0.9) !important;
+                border: 1px solid var(--border) !important;
+                padding: 2rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                transition: all 0.3s ease !important;
+                margin: 0 !important;
+                float: none !important;
             }
 
-            #gr_custom_widget_ {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
+            #gr_custom_widget_current .gr_custom_each_container_:hover {
+                transform: translateY(-5px) !important;
+                border-color: var(--accent) !important;
+                box-shadow: 0 8px 25px rgba(177, 156, 217, 0.3) !important;
             }
-            .gr_custom_header_ {
-                border-bottom: 2px solid var(--accent);
-                width: 100%;
-                margin-bottom: 2rem;
-                text-align: left;
-                font-size: 1.5rem;
-                padding-bottom: 1rem;
-                display: none;
+
+            #gr_custom_widget_current .gr_custom_book_container_ {
+                width: 160px !important;
+                margin: 0 0 1.5rem 0 !important;
+                float: none !important;
             }
-            .gr_custom_header_ a {
+
+            #gr_custom_widget_current .gr_custom_book_container_ img {
+                width: 100% !important;
+                height: auto !important;
+                border: 1px solid var(--border) !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+            }
+
+            #gr_custom_widget_current .gr_custom_title_ {
+                font-family: 'Playfair Display', serif !important;
+                font-size: 1.4rem !important;
+                font-weight: 700 !important;
+                margin: 0 0 0.5rem 0 !important;
+                line-height: 1.3 !important;
+            }
+
+            #gr_custom_widget_current .gr_custom_title_ a {
+                color: var(--text-primary) !important;
+                text-decoration: none !important;
+            }
+
+            #gr_custom_widget_current .gr_custom_title_ a:hover {
+                color: var(--accent) !important;
+            }
+
+            #gr_custom_widget_current .gr_custom_author_ {
+                font-size: 1rem !important;
+                color: var(--accent) !important;
+                font-weight: 500 !important;
+                margin-bottom: 0 !important;
+            }
+
+            #gr_custom_widget_current .gr_custom_rating_ {
+                display: none !important;
+            }
+
+            /* Library Section */
+            .library-section {
+                padding: 3rem;
+                background: #fafafa;
+                border: 1px solid rgba(177, 156, 217, 0.2);
+                border-radius: 8px;
+                position: relative;
+                clear: none !important;
+            }
+
+            .library-section::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background-image:
+                    repeating-linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 280px,
+                        rgba(177, 156, 217, 0.1) 280px,
+                        rgba(177, 156, 217, 0.1) 282px
+                    );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .section-title {
                 font-family: 'Playfair Display', serif;
-                font-weight: 700;
-                color: var(--text-primary);
-                text-decoration: none;
-            }
-            .gr_custom_each_container_ {
-                width: 100%;
-                clear: none;
-                margin-bottom: 0;
-                overflow: hidden;
-                padding: 1.5rem;
-                border: 1px solid var(--border);
-                background: var(--bg-secondary);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-                transition: all 0.3s ease;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .gr_custom_each_container_:hover {
-                border-color: var(--accent);
-                transform: translateX(10px);
-            }
-
-            .gr_custom_book_container_ {
-                overflow: visible;
-                height: auto;
-                float: none;
-                margin-right: 0;
-                margin-bottom: 1rem;
-                width: 100px;
-            }
-
-            .gr_custom_book_container_ img {
-                width: 100px;
-                height: auto;
-                border: 1px solid var(--border);
-                image-rendering: auto;
-            }
-            .gr_custom_author_ {
-                font-size: 0.95rem;
-                color: var(--accent);
-                margin-top: 0.5rem;
-                font-weight: 500;
-            }
-            .gr_custom_title_ {
-                font-family: 'Playfair Display', serif;
-                font-size: 1.5rem;
+                font-size: 2.5rem;
                 font-weight: 700;
                 margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                position: relative;
+                z-index: 1;
             }
-            .gr_custom_title_ a {
-                color: var(--text-primary);
-                text-decoration: none;
-            }
-            .gr_custom_title_ a:hover {
-                color: var(--accent);
-            }
-            .gr_custom_tags_ {
-                font-size: 0.85rem;
+
+            .section-description {
                 color: var(--text-secondary);
-                margin-top: 0.5rem;
+                margin-bottom: 2.5rem;
+                font-size: 1.1rem;
+                position: relative;
+                z-index: 1;
             }
-            .gr_custom_rating_ {
-                float: right;
-                margin-top: 0.5rem;
+
+            /* Read Books Widget - Grid Display */
+            #gr_custom_widget_read {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+                gap: 2rem !important;
+                position: relative;
+                z-index: 1;
             }
-            #gr_custom_widget_ center {
-                margin-top: 2rem;
-                opacity: 0.5;
+
+            #gr_custom_widget_read .gr_custom_container_ {
+                display: contents !important;
             }
-            #gr_custom_widget_ center:hover {
-                opacity: 1;
+
+            #gr_custom_widget_read .gr_custom_each_container_ {
+                background: rgba(255, 255, 255, 0.9) !important;
+                border: 1px solid var(--border) !important;
+                padding: 1.5rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                transition: all 0.3s ease !important;
+                margin: 0 !important;
+                float: none !important;
             }
-            @media (max-width: 768px) {
-            #gr_custom_widget_ {
-                grid-template-columns: 1fr;
+
+            #gr_custom_widget_read .gr_custom_each_container_:hover {
+                transform: translateY(-5px) !important;
+                border-color: var(--accent) !important;
+                box-shadow: 0 4px 15px rgba(177, 156, 217, 0.2) !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_book_container_ {
+                width: 110px !important;
+                margin: 0 0 1rem 0 !important;
+                float: none !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_book_container_ img {
+                width: 100% !important;
+                height: auto !important;
+                border: 1px solid var(--border) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_title_ {
+                font-family: 'Playfair Display', serif !important;
+                font-size: 1rem !important;
+                font-weight: 700 !important;
+                margin: 0 0 0.5rem 0 !important;
+                line-height: 1.3 !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_title_ a {
+                color: var(--text-primary) !important;
+                text-decoration: none !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_title_ a:hover {
+                color: var(--accent) !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_author_ {
+                font-size: 0.85rem !important;
+                color: var(--accent) !important;
+                font-weight: 500 !important;
+            }
+
+            #gr_custom_widget_read .gr_custom_rating_ {
+                margin-top: 0.5rem !important;
+                float: none !important;
+            }
+
+            /* Global Goodreads Overrides */
+            .gr_custom_container_ {
+                border: none !important;
+                padding: 0 !important;
+                background: transparent !important;
+                width: 100% !important;
+            }
+
+            .gr_custom_header_ {
+                display: none !important;
+            }
+
+            [id^="gr_custom_widget"] center {
+                grid-column: 1 / -1 !important;
+                margin-top: 2rem !important;
+                opacity: 0.3 !important;
+            }
+
+            [id^="gr_custom_widget"] br {
+                display: none !important;
+            }
+
+            /* Responsive */
+            @media (max-width: 968px) {
+                .reads-hero {
+                    grid-template-columns: 1fr;
+                    gap: 3rem;
+                }
+
+                .reads-header {
+                    padding-right: 0;
                 }
             }
 
-            @media (min-width: 769px) and (max-width: 1024px) {
-            #gr_custom_widget_ {
-                grid-template-columns: repeat(2, 1fr);
+
+            @media (max-width: 768px) {
+                .current-reading-card {
+                    float: none;
+                    width: 100%;
+                    margin-left: 0;
+                    margin-bottom: 3rem;
+                }
+
+                .library-section {
+                    padding: 2rem 1.5rem;
+                }
+
+                #gr_custom_widget_read {
+                    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+                    gap: 1.5rem !important;
+                }
+
+                .section-title {
+                    font-size: 2rem;
                 }
             }
         </style>
-
-        <div id="gr_custom_widget_">
-
-        </div>
-         <script src="https://www.goodreads.com/review/custom_widget/194522871.AnChelB's%20bookshelf:%20read?cover_position=left&cover_size=small&num_books=20&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=0&show_tags=0&show_title=1&sort=rating&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1769548248&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script>
     </main>
+
+    <script src="https://www.goodreads.com/review/custom_widget/194522871?shelf=currently-reading&num_books=1&widget_id=current" type="text/javascript" charset="utf-8"></script>
+
+    <script src="https://www.goodreads.com/review/custom_widget/194522871?shelf=read&num_books=50&sort=rating&widget_id=read" type="text/javascript" charset="utf-8"></script>
 
     <script src="script.js"></script>
     <script>
@@ -172,29 +373,26 @@
     });
     </script>
     <script>
-    // Remove random numbers from Goodreads class names to work with our custom CSS
+    // Remove suffixes from Goodreads class names to work with our custom CSS
     window.addEventListener('load', function() {
-        setTimeout(function() {
-            // Find all elements with numbered Goodreads classes
-            const elements = document.querySelectorAll('[class*="gr_custom_"]');
-            elements.forEach(el => {
-                // Get all classes
-                const classes = Array.from(el.classList);
-                classes.forEach(className => {
-                    if (className.startsWith('gr_custom_')) {
-                        // Remove the number suffix and add the clean class name
-                        const cleanClass = className.replace(/_\d+$/, '_');
-                        el.classList.add(cleanClass);
-                    }
-                });
-            });
+        const delays = [100, 300, 500, 1000, 1500];
 
-            // Also handle IDs
-            const widget = document.querySelector('[id*="gr_custom_widget_"]');
-            if (widget) {
-                widget.id = 'gr_custom_widget_';
-            }
-        }, 100);
+        delays.forEach(delay => {
+            setTimeout(function() {
+                // Find all elements with Goodreads classes
+                const elements = document.querySelectorAll('[class*="gr_custom_"]');
+                elements.forEach(el => {
+                    const classes = Array.from(el.classList);
+                    classes.forEach(className => {
+                        if (className.startsWith('gr_custom_')) {
+                            // Remove any suffix (numbers OR words like _read, _current)
+                            const cleanClass = className.replace(/_(read|current|\d+)$/, '_');
+                            el.classList.add(cleanClass);
+                        }
+                    });
+                });
+            }, delay);
+        });
     });
     </script>
 </body>
