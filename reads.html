@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Reads</title>
+    <title>Reading</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +12,15 @@
 <body>
     <nav class="nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="reads.html" class="nav-link active">Current Reads</a>
-        <a href="projects.html" class="nav-link">Projects</a>
-        <a href="music.html" class="nav-link">Music</a>
+        <a href="reads.html" class="nav-link active">Reading</a>
+        <a href="projects.html" class="nav-link">Coding</a>
+        <a href="music.html" class="nav-link">Listening</a>
     </nav>
 
     <main class="page-content">
         <div class="page-header">
             <span class="page-number">01</span>
-            <h1 class="page-title">Current Reads</h1>
+            <h1 class="page-title">Reading</h1>
             <p class="page-description">Books I'm currently exploring and enjoying</p>
         </div>
 
@@ -35,7 +35,7 @@
                 grid-template-columns: repeat(3, 1fr) !important;
                 gap: 2rem !important;
             }
-            
+
             .gr_custom_container_ {
                 border: none;
                 border-radius: 0;
@@ -45,7 +45,7 @@
                 width: 100%;
                 max-width: 1200px;
             }
-            
+
             #gr_custom_widget_ {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -81,12 +81,12 @@
                 align-items: center;
                 text-align: center;
             }
-            
+
             .gr_custom_each_container_:hover {
                 border-color: var(--accent);
                 transform: translateX(10px);
             }
-           
+
             .gr_custom_book_container_ {
                 overflow: visible;
                 height: auto;
@@ -188,7 +188,7 @@
                     }
                 });
             });
-            
+
             // Also handle IDs
             const widget = document.querySelector('[id*="gr_custom_widget_"]');
             if (widget) {
