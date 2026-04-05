@@ -12,9 +12,11 @@
 <body>
     <nav class="nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="reads.html" class="nav-link active">Reading</a>
+        <a href="cv.html" class="nav-link">CV</a>
         <a href="projects.html" class="nav-link">Coding</a>
+        <a href="reads.html" class="nav-link active">Reading</a>
         <a href="music.html" class="nav-link">Listening</a>
+
     </nav>
 
     <main class="page-content">
@@ -113,9 +115,9 @@
             }
 
             #gr_custom_widget_current .gr_custom_each_container_ {
-                background: rgba(255, 255, 255, 0.9) !important;
-                border: 1px solid var(--border) !important;
-                padding: 2rem !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
@@ -313,6 +315,10 @@
                 grid-column: 1 / -1 !important;
                 margin-top: 2rem !important;
                 opacity: 0.3 !important;
+            }
+
+            #gr_custom_widget_current center {
+                display: none !important;
             }
 
             [id^="gr_custom_widget"] br {
