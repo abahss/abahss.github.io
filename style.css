@@ -3,9 +3,9 @@
     --bg-secondary: #ffffff;
     --bg-tertiary: #f5f3f7;
     --text-primary: #2d2d2d;
-    --text-secondary: #6b6b6b;
-    --accent: #b19cd9;
-    --accent-dark: #9370db;
+    --text-secondary: #2d2d2d;
+    --accent: #2d2d2d;
+    --accent-dark: #2d2d2d;
     --border: rgba(177, 156, 217, 0.2);
     --shadow: rgba(0, 0, 0, 0.1);
 }
@@ -17,11 +17,29 @@
 }
 
 body {
-    font-family: 'Work Sans', sans-serif;
-    background-color: var(--bg-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background-image: url('holographic-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
+    z-index: 0;
+    pointer-events: none;
+}
+
+main, .nav {
+    position: relative;
+    z-index: 1;
 }
 
 /* Navigation */
@@ -100,7 +118,7 @@ body {
 }
 
 .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 900;
     line-height: 1;
@@ -158,8 +176,10 @@ body {
 }
 
 .hero-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
+    background: rgba(232, 223, 245, 0.45);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(177, 156, 217, 0.5);
+    box-shadow: 0 4px 20px rgba(177, 156, 217, 0.25);
     padding: 2.5rem;
     text-decoration: none;
     color: var(--text-primary);
@@ -190,7 +210,7 @@ body {
 }
 
 .card-number {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 3rem;
     font-weight: 700;
     color: var(--accent);
@@ -199,7 +219,7 @@ body {
 }
 
 .hero-card h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
@@ -250,7 +270,7 @@ body {
 }
 
 .quote-text {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.1rem;
     font-style: italic;
     line-height: 1.7;
@@ -293,7 +313,7 @@ body {
 }
 
 .page-number {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.5rem;
     color: var(--accent);
     display: block;
@@ -302,7 +322,7 @@ body {
 }
 
 .page-title {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 900;
     margin-bottom: 1rem;
@@ -350,7 +370,7 @@ body {
 }
 
 .book-info h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
@@ -471,7 +491,7 @@ body {
 }
 
 .project-content h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.8rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -579,7 +599,7 @@ body {
 }
 
 .music-info h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
@@ -639,7 +659,7 @@ body {
 }
 
 .stat-number {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--accent);
