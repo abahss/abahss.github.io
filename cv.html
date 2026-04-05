@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .cv-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Section headings */
+        .cv-section {
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .cv-section:nth-child(1) { animation-delay: 0.3s; }
+        .cv-section:nth-child(2) { animation-delay: 0.4s; }
+        .cv-section:nth-child(3) { animation-delay: 0.5s; }
+        .cv-section:nth-child(4) { animation-delay: 0.6s; }
+
+        .cv-section-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Experience / Education entries */
+        .cv-entry {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.25rem 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(177, 156, 217, 0.1);
+        }
+
+        .cv-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .cv-entry-role {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            grid-column: 1;
+        }
+
+        .cv-entry-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            grid-column: 2;
+            grid-row: 1;
+            text-align: right;
+        }
+
+        .cv-entry-org {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            grid-column: 1;
+        }
+
+        .cv-entry-location {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            grid-column: 2;
+            text-align: right;
+        }
+
+        .cv-entry-bullets {
+            grid-column: 1 / -1;
+            margin: 0.75rem 0 0 0;
+            padding-left: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .cv-entry-bullets li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Skills */
+        .cv-skills-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-skills-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+        }
+
+        .cv-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        /* Sidebar */
+        .cv-sidebar {
+            position: sticky;
+            top: 7rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.5s forwards;
+        }
+
+        .cv-sidebar-card {
+            background: rgba(232, 223, 245, 0.45);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(177, 156, 217, 0.5);
+            box-shadow: 0 4px 20px rgba(177, 156, 217, 0.15);
+            padding: 1.5rem;
+        }
+
+        .cv-sidebar-card .cv-section-title {
+            margin-bottom: 1rem;
+        }
+
+        .cv-sidebar-entry {
+            margin-bottom: 1.25rem;
+        }
+
+        .cv-sidebar-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .cv-sidebar-entry-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .cv-sidebar-entry-sub {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .cv-sidebar-entry-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 0.3rem;
+        }
+
+        .cv-download {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .cv-download:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .cv-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-entry {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-entry-date,
+            .cv-entry-location {
+                text-align: left;
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="cv.html" class="nav-link active">CV</a>
+        <a href="projects.html" class="nav-link">Coding</a>
+        <a href="reads.html" class="nav-link">Reading</a>
+        <a href="music.html" class="nav-link">Listening</a>
+
+    </nav>
+
+    <main class="page-content">
+        <div class="page-header">
+            <h1 class="page-title">Anna Chelsea Bahß</h1>
+            <p class="page-description">Data Scientist / Product Owner — Berlin</p>
+        </div>
+
+        <div class="cv-layout">
+            <!-- Main column -->
+            <div>
+                <section class="cv-section cv-sidebar-card" style="margin-bottom: 2rem;">
+                    <h2 class="cv-section-title">Skills</h2>
+                    <div class="cv-skills-group">
+                        <div class="cv-skills-label">Programming &amp; Tools</div>
+                        <div class="cv-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">R</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">MLOps</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Jira</span>
+                            <span class="tag">Confluence</span>
+                            <span class="tag">Agile</span>
+                        </div>
+                    </div>
+                    <div class="cv-skills-group" style="margin-bottom: 0;">
+                        <div class="cv-skills-label">Languages</div>
+                        <div class="cv-tags">
+                            <span class="tag">German (native)</span>
+                            <span class="tag">English (native)</span>
+                            <span class="tag">Japanese (A2)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cv-section cv-sidebar-card" style="margin-bottom: 2rem;">
+                    <h2 class="cv-section-title">Experience</h2>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Data Science &amp; AI Bootcamp</span>
+                        <span class="cv-entry-date">09/2025 – 12/2025</span>
+                        <span class="cv-entry-org">Le Wagon</span>
+                        <span class="cv-entry-location">Berlin, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Delivered a fully implemented app based on Retrieval-Augmented Generation for analysing Bundestag speeches over the last 5 years.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Technical Product Owner</span>
+                        <span class="cv-entry-date">02/2024 – 05/2025</span>
+                        <span class="cv-entry-org">Robert Koch-Institut</span>
+                        <span class="cv-entry-location">Berlin, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Led a 6-person team developing an internal laboratory system.</li>
+                            <li>Automated workflows and ensured highest data quality standards.</li>
+                            <li>Planned and prioritised feature development and managed an external vendor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Data Scientist</span>
+                        <span class="cv-entry-date">07/2023 – 01/2024</span>
+                        <span class="cv-entry-org">Robert Koch-Institut</span>
+                        <span class="cv-entry-location">Berlin, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Backend development for the "Digital Vaccination Rate Monitoring" project.</li>
+                            <li>Managed Tableau projects and their ETL pipelines to ensure 24/7 availability of public dashboards.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Research Associate</span>
+                        <span class="cv-entry-date">04/2021 – 04/2023</span>
+                        <span class="cv-entry-org">Media Bias Project</span>
+                        <span class="cv-entry-location">Tokyo, JP</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Developed a news aggregator for detecting bias and collecting annotation data.</li>
+                            <li>Effectiveness study of visual bias communication strategies in R.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Python Course Instructor (Master's Students)</span>
+                        <span class="cv-entry-date">2020 – 2021</span>
+                        <span class="cv-entry-org">Universität Konstanz</span>
+                        <span class="cv-entry-location">Konstanz, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Taught programming fundamentals, web scraping, OOP, and data visualisation.</li>
+                            <li>Designed curricula and teaching materials; graded assignments and final projects.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Tutor – Statistics Module 'Applied Regression Analysis'</span>
+                        <span class="cv-entry-date">2020 – 2021</span>
+                        <span class="cv-entry-org">Universität zu Köln</span>
+                        <span class="cv-entry-location">Köln, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Teaching and application of linear and logistic regression models.</li>
+                            <li>Introduction to SPSS and analysis of socio-political questions using data from the European Values Study.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Research Associate – Project 'SOCIALBOND'</span>
+                        <span class="cv-entry-date">10/2017 – 10/2019</span>
+                        <span class="cv-entry-org">Institut für Soziologie und Sozialpsychologie (ISS), Universität zu Köln</span>
+                        <span class="cv-entry-location">Köln, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Implemented surveys on LimeSurvey and conducted data analysis in R.</li>
+                            <li>Conducted surveys in school classes (ERC-funded project).</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Founder &amp; Data Analyst</span>
+                        <span class="cv-entry-date">10/2017 – 10/2019</span>
+                        <span class="cv-entry-org">bahsskabasele GbR</span>
+                        <span class="cv-entry-location">Köln, DE</span>
+                        <ul class="cv-entry-bullets">
+                            <li>Advised clients on statistical analysis of research results, model selection, and hypothesis testing.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="cv-section cv-sidebar-card" style="margin-bottom: 0;">
+                    <h2 class="cv-section-title">Education</h2>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">M.Sc. Social and Economic Data Science (1,6)</span>
+                        <span class="cv-entry-date">2019 – 2023</span>
+                        <span class="cv-entry-org">Universität Konstanz</span>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">B.Sc. Sozialwissenschaften (1,6)</span>
+                        <span class="cv-entry-date">2015 – 2019</span>
+                        <span class="cv-entry-org">Universität zu Köln</span>
+                    </div>
+
+                    <div class="cv-entry">
+                        <span class="cv-entry-role">Abitur (1,5)</span>
+                        <span class="cv-entry-date">2008 – 2015</span>
+                        <span class="cv-entry-org">Erzbischöfliche Liebfrauenschule Köln</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="cv-sidebar">
+                <a href="Bahss_CV.pdf" class="cv-download" download>Download PDF</a>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Certificates</h2>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">Product Owner / Scrum Master</div>
+                        <div class="cv-sidebar-entry-sub">TÜV SÜD (2024)</div>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Projects</h2>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">Data Pipeline for Data Archive</div>
+                        <div class="cv-sidebar-entry-sub">08/2025 – 09/2025</div>
+                        <div class="cv-sidebar-entry-desc">Interdisciplinary open data research project "PrisonPandemic" — automated data extraction via Google Drive APIs and conversion of structured files into standardised archival formats.</div>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Scholarship</h2>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">DAAD IFI Scholarship</div>
+                        <div class="cv-sidebar-entry-sub">09/2022 – 04/2023</div>
+                        <div class="cv-sidebar-entry-desc">Research project at the National Institute of Informatics in Tokyo.</div>
+                    </div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Volunteering</h2>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">Board Member</div>
+                        <div class="cv-sidebar-entry-sub">Toastmasters International, 2021</div>
+                    </div>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">Radio Host &amp; Editor</div>
+                        <div class="cv-sidebar-entry-sub">Kölncampus, 2017 – 2019</div>
+                    </div>
+                    <div class="cv-sidebar-entry">
+                        <div class="cv-sidebar-entry-title">Youth Mentor</div>
+                        <div class="cv-sidebar-entry-sub">Open Door International, 2012 – present</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
